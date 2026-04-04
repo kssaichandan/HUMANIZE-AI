@@ -1,33 +1,36 @@
 # HumanizeAI
 
-HumanizeAI is a single-file web application for rewriting text with a multi-agent pipeline.
+HumanizeAI is a single-file web application that rewrites text using a multi-agent pipeline.
 
-## Overview
+## Description
 
-The app runs a three-agent workflow:
+The application processes text through three agents:
 
-1. Agent 1 (Detector) identifies AI-like sections.
-2. Agent 2 (Humanizer) rewrites content to sound more natural.
-3. Agent 3 (Verifier) checks meaning preservation.
+1. Detector identifies AI-like writing patterns.
+2. Humanizer rewrites content to sound more natural.
+3. Verifier checks whether meaning is preserved.
 
-It supports multiple providers (including local models), iteration history, diff comparison, and export options.
+It supports cloud and local model providers, iterative improvements, output comparison, and export.
 
-## Project Files
+## Features
 
-- `humanizeai_v2 (1).html` - Main self-contained application.
-- `README.md` - Project documentation.
+- Three-agent rewrite pipeline
+- Multiple provider support (cloud and local)
+- Iteration history and score tracking
+- Side-by-side diff comparison
+- Export to `.txt`, `.md`, and `.docx`
 
-## Run Locally
+## Getting Started
 
 1. Open `humanizeai_v2 (1).html` in a modern browser.
-2. Configure model providers from the in-app Models panel.
-3. Load or write text, then run the pipeline.
+2. Configure models from the Models panel.
+3. Upload, paste, or write input text.
+4. Run the pipeline and review results.
 
-## Security Notes
+## Project Structure
 
-- Do not commit API keys or secrets.
-- Use local browser storage carefully on shared machines.
-- Prefer environment-specific key handling if you later split this into a backend/frontend architecture.
+- `humanizeai_v2 (1).html` - Main self-contained application file
+- `README.md` - Project overview and usage guide
 
 ## License
 
