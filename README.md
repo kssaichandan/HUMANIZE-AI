@@ -1,8 +1,8 @@
 # HumanizeAI
 
 > **🌐 Live app:** https://humanize-ai-text.kssaichandan.workers.dev
-
-**🌐 Live app:** https://humanize-ai-text-kd2b.onrender.com
+>
+> **🌐 Live app:** https://humanize-ai-text-kd2b.onrender.com
 
 > **📦 Source code:** https://github.com/kssaichandan/HUMANIZE-AI
 
