@@ -1,37 +1,96 @@
 # HumanizeAI
 
-HumanizeAI is a single-file web application that rewrites text using a multi-agent pipeline.
+**HumanizeAI** is a single-file, zero-install web app that rewrites AI-sounding text into natural, human prose using a self-correcting **three-agent pipeline**. Everything runs in your browser — your text and API keys never leave your machine except to go directly to the model provider you choose.
 
-## Description
+> Open `Humanize AI.html` in any modern browser and you're running. No build step, no server, no account.
 
-The application processes text through three agents:
+---
 
-1. Detector identifies AI-like writing patterns.
-2. Humanizer rewrites content to sound more natural.
-3. Verifier checks whether meaning is preserved.
+## How it works
 
-It supports cloud and local model providers, iterative improvements, output comparison, and export.
+Your document passes through a loop of three AI agents that critique and improve each other's work:
+
+1. **Detector** — scores how "AI-written" the text reads and flags the giveaway passages.
+2. **Humanizer** — rewrites the flagged text to sound natural while preserving meaning and facts.
+3. **Verifier** — checks the rewrite still means the same thing and re-scores it.
+
+After each rewrite the Detector runs again on the new text, so the app *measures* its own improvement instead of guessing. The loop repeats until **both** gates are satisfied:
+
+- **Meaning preserved** ≥ your meaning threshold, **and**
+- **AI score** ≤ your AI-score threshold.
+
+If a run hits the iteration limit without clearing both gates, the app marks the best iteration (★) and offers to accept it.
+
+---
 
 ## Features
 
-- Three-agent rewrite pipeline
-- Multiple provider support (cloud and local)
-- Iteration history and score tracking
-- Side-by-side diff comparison
-- Export to `.txt`, `.md`, and `.docx`
+### Pipeline
+- Iterative Detector → Humanizer → Verifier loop (1–20 iterations).
+- Two-gate stop condition (meaning **and** AI score must both pass).
+- "Already human" short-circuit — skips rewriting if the text is already clean.
+- Pause / resume / stop mid-run, and per-agent re-run.
+- Live token-by-token streaming of each agent's output.
 
-## Getting Started
+### Models & providers
+- Built-in support for **OpenAI, Anthropic (Claude), Google Gemini, Groq, Mistral, and Together AI**.
+- Any **OpenAI-compatible endpoint** via the Custom provider (OpenRouter, LM Studio, llama.cpp, vLLM, etc.).
+- **Local models** through Ollama — scan, select, and auto-assign across all three agents.
+- Mix and match: a different model for each agent if you like.
+- One-click connection test for each provider.
 
-1. Open `humanizeai_v2 (1).html` in a modern browser.
-2. Configure models from the Models panel.
-3. Upload, paste, or write input text.
-4. Run the pipeline and review results.
+### External AI detectors (optional)
+- Plug in a real detector API — Turnitin-compatible, GPTZero / ZeroGPT-compatible, Copyleaks-compatible, or any custom/local endpoint — and assign it to the Detector agent for authoritative scoring.
+- A built-in **statistical AI signal** (burstiness, vocabulary diversity, AI-phrase density) runs locally with no API call, and warns you when it diverges sharply from the model's score.
 
-## Project Structure
+### Rewrite style controls
+Shape the Humanizer's output with three dropdowns:
+- **Intensity** — *Light (targeted)* edits only the flagged passages, *Standard* rewrites the whole document, *Aggressive* freely restructures.
+- **Reading level** — Default / High school / University / Doctorate.
+- **Purpose** — Essay, Research paper, Patent, Technical report, Business report, Blog post, Email, or Marketing. Formal options push toward precise, objective, contraction-free prose; casual ones toward conversational writing.
 
-- `humanizeai_v2 (1).html` - Main self-contained application file
-- `README.md` - Project overview and usage guide
+### Input & output
+- Input by **upload** (`.txt`, `.md`, `.pdf`, `.docx`), **paste**, or **write** — drag-and-drop supported.
+- Handles long documents automatically (chunked rewriting when needed).
+- Side-by-side diff to compare the original against any iteration.
+- Full iteration history with per-run scores and an AI-score trend sparkline.
+- Export the result as `.txt`, `.md`, or `.docx`, or export/import the whole session as JSON.
+
+### Privacy
+- 100% client-side. **No server, no tracking, no analytics, no accounts.**
+- API keys are stored only in your browser's `localStorage` and are sent only to the provider's own endpoint.
+- Key inclusion in session exports is **off by default** and requires explicit confirmation.
+
+---
+
+## Getting started
+
+1. **Open the app.** Double-click `Humanize AI.html`, or for local model/detector endpoints serve the folder first:
+   ```bash
+   python -m http.server 8000
+   # then visit http://localhost:8000/Humanize%20AI.html
+   ```
+2. **Add a model.** Open the **Models** panel, pick a provider, paste your API key (or point at a local Ollama/Custom endpoint), and assign models to the three agents.
+3. *(Optional)* **Add a detector.** In **Models → Detector APIs**, configure an external detector and assign it to Agent 1 for real-world scoring.
+4. **Add your text.** Upload, paste, or write it.
+5. **Tune settings** *(optional)* — iteration cap, meaning threshold, AI-score threshold, and rewrite style.
+6. **Run** and review the results, diff, and history.
+
+### Where to get free API keys
+- **Groq** — fast Llama/Mixtral models, generous free tier (`console.groq.com`).
+- **Google Gemini** — free tier with very large context (`aistudio.google.com`).
+- **Mistral** — free tier (`console.mistral.ai`).
+- **Ollama** — fully local and free if you have the hardware (`ollama.com`).
+
+---
+
+## Project structure
+
+- `Humanize AI.html` — the entire self-contained application (UI, pipeline, and logic in one file).
+- `README.md` — this file.
+
+---
 
 ## License
 
-No license file is currently included.
+No license file is currently included; all rights reserved by the author.

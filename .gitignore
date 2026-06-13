@@ -1,0 +1,29 @@
+# Local API keys for testing — never commit these
+.groq_key
+.openai_key
+.anthropic_key
+.gemini_key
+
+# Test artifacts created by Playwright drivers
+test_*.js
+test_progress.log
+test_report.json
+test_shots/
+test_groq_edge_cases.js
+long_run_*.js
+long_run_progress.log
+long_run_shots/
+smoke_test.js
+smoke_screenshots/
+PIPELINE_PROGRESS.md
+pipeline_progress_watcher.js
+
+# Editor noise
+.vscode/
+*.swp
+*.swo
+
+# Internal docs, logs & tool config — kept local, not published
+doc/
+SESSION_LOG.md
+.claude/
