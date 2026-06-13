@@ -113,6 +113,7 @@ The app needs no backend — API calls go directly from the visitor's browser to
 ## Project structure
 
 - `Humanize AI.html` — the entire self-contained application (UI, pipeline, and logic in one file).
+- `wrangler.jsonc` — Cloudflare Workers config (serves the `public/` build output as static assets).
 - `render.yaml` — Render blueprint for free static hosting.
 - `README.md` — this file.
 
