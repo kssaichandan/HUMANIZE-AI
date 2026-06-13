@@ -5,13 +5,14 @@
 #   1. Push this repo to GitHub (done).
 #   2. Render dashboard -> New + -> Blueprint -> connect this repository.
 #   3. Render reads this file and creates the static site (free, no card needed).
-#   4. The app goes live at:  https://humanize-ai.onrender.com
-#      If that subdomain is already taken globally, Render appends a short
-#      suffix automatically; you can rename the service in the dashboard later.
+#   4. The app goes live at:  https://humanize-ai-text.onrender.com
+#      The plain "humanize-ai" subdomain is taken globally on Render, so this
+#      uses the more distinctive "humanize-ai-text" name to get a clean URL.
+#      (.onrender.com names are global; Render adds a random suffix on collision.)
 
 services:
   - type: web
-    name: humanize-ai            # -> https://humanize-ai.onrender.com
+    name: humanize-ai-text       # -> https://humanize-ai-text.onrender.com
     runtime: static
     # Copy the single-file app into a clean publish folder as index.html at
     # build time. This keeps "Humanize AI.html" as the repo's canonical file

@@ -4,7 +4,7 @@
 
 > Open `Humanize AI.html` in any modern browser and you're running. No build step, no server, no account.
 
-**Live:** once deployed on Render (see [Hosting](#hosting)), the app runs at **https://humanize-ai.onrender.com**.
+**Live:** once deployed on Render (see [Hosting](#hosting)), the app runs at **https://humanize-ai-text.onrender.com**.
 
 ---
 
@@ -93,7 +93,7 @@ The app is a single static HTML file, so it can be hosted anywhere that serves s
 1. Push this repo to GitHub.
 2. In the [Render](https://render.com) dashboard: **New + → Blueprint → connect this repository**.
 3. Render reads `render.yaml`, copies the app to `index.html`, and publishes it — free, no credit card.
-4. Your site goes live at **https://humanize-ai.onrender.com** (Render appends a short suffix if that name is already taken; you can rename it in the dashboard).
+4. Your site goes live at **https://humanize-ai-text.onrender.com** (`.onrender.com` names are global; if the name is taken Render appends a random suffix, so pick a distinctive `name:` in `render.yaml`).
 
 The app needs no backend — API calls go directly from the visitor's browser to whichever model provider they configure.
 
