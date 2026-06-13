@@ -1,29 +1,20 @@
-# Local API keys for testing — never commit these
+# Everything internal — docs, session logs, tests, screenshots — lives in doc/.
+# It is kept local and never published. Put anything private in doc/.
+doc/
+
+# API keys — safety net (these live in the project root, not in doc/).
+# Never commit these.
 .groq_key
 .openai_key
 .anthropic_key
 .gemini_key
 
-# Test artifacts created by Playwright drivers
-test_*.js
-test_progress.log
-test_report.json
-test_shots/
-test_groq_edge_cases.js
-long_run_*.js
-long_run_progress.log
-long_run_shots/
-smoke_test.js
-smoke_screenshots/
-PIPELINE_PROGRESS.md
-pipeline_progress_watcher.js
-
-# Editor noise
+# Tool / editor config
+.claude/
 .vscode/
+
+# Stray test artifacts, in case any tool regenerates them in the project root
+test_*
+*.log
 *.swp
 *.swo
-
-# Internal docs, logs & tool config — kept local, not published
-doc/
-SESSION_LOG.md
-.claude/
