@@ -2,6 +2,8 @@
 
 > **🌐 Live app:** https://humanize-ai-text.kssaichandan.workers.dev
 
+**🌐 Live app:** https://humanize-ai-text-kd2b.onrender.com
+
 > **📦 Source code:** https://github.com/kssaichandan/HUMANIZE-AI
 
 **HumanizeAI** is a single-file, zero-install web app that rewrites AI-sounding text into natural, human prose using a self-correcting **three-agent pipeline**. Everything runs in your browser — your text and API keys never leave your machine except to go directly to the model provider you choose.
