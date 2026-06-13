@@ -4,7 +4,7 @@
 
 > Open `Humanize AI.html` in any modern browser and you're running. No build step, no server, no account.
 
-**Live:** **https://humanize-ai-text.pages.dev** (Cloudflare Pages — see [Hosting](#hosting)).
+**Live:** **https://humanize-ai-text.kssaichandan.workers.dev** (Cloudflare — see [Hosting](#hosting)).
 
 ---
 
@@ -98,7 +98,7 @@ The app is a single static HTML file, so it can be hosted on any static host. On
 1. [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages → Create → Pages → Connect to Git** → select this repo.
 2. **Project name** `humanize-ai-text`, **production branch** `main`, **framework preset** `None`.
 3. Enter the build command and output directory above → **Save and Deploy**.
-4. Live at **https://humanize-ai-text.pages.dev** (Cloudflare gives the exact name you choose — no random suffix).
+4. Live at **https://humanize-ai-text.kssaichandan.workers.dev** — Cloudflare now serves static deploys on `<project>.<account>.workers.dev` and gives the exact project name you choose (no random suffix).
 
 ### Render (alternative)
 
