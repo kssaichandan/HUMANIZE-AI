@@ -1,0 +1,26 @@
+# Render Blueprint — deploys HumanizeAI as a free static website.
+# Render reads this file automatically. Spec: https://render.com/docs/blueprint-spec
+#
+# How to deploy:
+#   1. Push this repo to GitHub (done).
+#   2. Render dashboard -> New + -> Blueprint -> connect this repository.
+#   3. Render reads this file and creates the static site (free, no card needed).
+#   4. The app goes live at:  https://humanize-ai.onrender.com
+#      If that subdomain is already taken globally, Render appends a short
+#      suffix automatically; you can rename the service in the dashboard later.
+
+services:
+  - type: web
+    name: humanize-ai            # -> https://humanize-ai.onrender.com
+    runtime: static
+    # Copy the single-file app into a clean publish folder as index.html at
+    # build time. This keeps "Humanize AI.html" as the repo's canonical file
+    # (no duplication in git) while serving it from a tidy root URL.
+    buildCommand: 'mkdir -p public && cp "Humanize AI.html" public/index.html'
+    staticPublishPath: ./public
+    pullRequestPreviewsEnabled: false
+    # Single-page app: every route serves the one HTML file.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
