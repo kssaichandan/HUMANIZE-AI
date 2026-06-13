@@ -4,7 +4,7 @@
 
 > Open `Humanize AI.html` in any modern browser and you're running. No build step, no server, no account.
 
-**Live:** once deployed on Render (see [Hosting](#hosting)), the app runs at **https://humanize-ai-text.onrender.com**.
+**Live:** **https://humanize-ai-text.pages.dev** (Cloudflare Pages — see [Hosting](#hosting)).
 
 ---
 
@@ -88,12 +88,21 @@ Shape the Humanizer's output with three dropdowns:
 
 ## Hosting
 
-The app is a single static HTML file, so it can be hosted anywhere that serves static files. This repo includes a **Render blueprint** (`render.yaml`) for one-click free deployment:
+The app is a single static HTML file, so it can be hosted on any static host. On every host the only "build" is copying the app to `index.html`:
 
-1. Push this repo to GitHub.
-2. In the [Render](https://render.com) dashboard: **New + → Blueprint → connect this repository**.
-3. Render reads `render.yaml`, copies the app to `index.html`, and publishes it — free, no credit card.
-4. Your site goes live at **https://humanize-ai-text.onrender.com** (`.onrender.com` names are global; if the name is taken Render appends a random suffix, so pick a distinctive `name:` in `render.yaml`).
+- **Build command:** `mkdir -p public && cp "Humanize AI.html" public/index.html`
+- **Build output directory:** `public`
+
+### Cloudflare Pages (recommended — clean free URL)
+
+1. [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages → Create → Pages → Connect to Git** → select this repo.
+2. **Project name** `humanize-ai-text`, **production branch** `main`, **framework preset** `None`.
+3. Enter the build command and output directory above → **Save and Deploy**.
+4. Live at **https://humanize-ai-text.pages.dev** (Cloudflare gives the exact name you choose — no random suffix).
+
+### Render (alternative)
+
+This repo also includes a Render blueprint (`render.yaml`): in the [Render](https://render.com) dashboard, **New + → Blueprint → connect this repo**. Works the same way, but note Render appends a random suffix to free `.onrender.com` URLs (e.g. `humanize-ai-text-kd2b.onrender.com`).
 
 The app needs no backend — API calls go directly from the visitor's browser to whichever model provider they configure.
 
